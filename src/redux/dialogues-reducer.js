@@ -2,8 +2,26 @@ let SEND_MESSAGE = 'SEND-MESSAGE';
 
 let UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE_BODY'
 
+let initialState = {
+    dialoguesArray: [
+        {id:1, name:'Pavel'},
+        {id:2, name:'Andrey'},
+        {id:3, name:'Nicolay'},
+        {id:4, name:'Alina'},
+        {id:5, name:'Maria'},
+        {id:6, name:'Victor'}
+    ], 
 
-const dialoguesReducer = (state, action)=> {
+messagesArray: [
+        {id:1, message:'Hi'},
+        {id:2, message:'How are you ?'},
+        {id:3, message:'I love It-kamasutra'},
+        {id:4, message:'That is a great course'},
+    ],
+    newMessageBody: 'xxx'
+}
+
+const dialoguesReducer = (state = initialState, action)=> {
 
     if // action.type === 'SEND-MESSAGE'
     (action.type === SEND_MESSAGE) 

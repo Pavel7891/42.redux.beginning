@@ -1,6 +1,6 @@
 import profileReducer from "./profile-reducer";
 import dialoguesReducer from "./dialogues-reducer";
-
+import sidebarReducer from "./sidebar-reducer";
 // let ADD_POST = 'ADD-POST'
 
 // let UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
@@ -40,6 +40,9 @@ let store  = {
                    {id:4, message:'That is a great course'},
                ],
                newMessageBody: 'xxx'
+           },
+           sidebarPage: {
+
            }
    },
    getState () {
@@ -59,7 +62,7 @@ let store  = {
    dispatch (action) {
       this._state.profilePage = profileReducer(this._state.profilePage, action);
       this._state.dialoguesPage = dialoguesReducer(this._state.dialoguesPage, action)
-
+      this._state.sidebarPage = sidebarReducer(this._state.sidebarPage, action)
       /* Функция уведомления подписчика остается в файле state.js
       */
       this._callSubscriber (this._state)

@@ -1,7 +1,7 @@
 
 //import  {rerenderEntireTree} from './redux/state'
 
-import store from './redux/state';
+import store from './redux/redux-store';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
@@ -13,7 +13,7 @@ const root = createRoot(container);
 
 
  let rerenderEntireTree =(state) => {
-    
+ 
  root.render(
 <BrowserRouter>
       <App 
@@ -30,5 +30,8 @@ const root = createRoot(container);
 
  rerenderEntireTree (store.getState());
 
- store.subscriber(rerenderEntireTree);
-
+ store.subscribe = () => {
+  let state = store.getState()
+  rerenderEntireTree(state)
+ }
+ 

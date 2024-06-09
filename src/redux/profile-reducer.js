@@ -4,8 +4,20 @@ let ADD_POST = 'ADD-POST'
 
 let UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 
-const profileReducer = (state, action)=> {
+let initialState = {
+
+    postsArray: [
+        {id: 1, message: "Hi, how are you ?", likeCount:10},
+        {id: 2, message: "I've got some news for you", likeCount: 20},
+        {id: 3, message: "Hope, you are lucky", likeCount: 25} 
+      ],
+    newPostText:'kamasutra',
    
+    }
+
+
+const profileReducer = (state = initialState, action)=> {
+debugger;
 //     if (action.type === ADD_POST)
         
 //         { 
@@ -27,10 +39,10 @@ const profileReducer = (state, action)=> {
 // 
 
 switch (action.type) {
-    
+  
     case ADD_POST:
         let newPost = {
-            id: 5,
+            id: 4,
             message: state.newPostText,
             likeCount: 0
         }
@@ -62,44 +74,18 @@ export const addPostCreator = () => {
     )
   }
 
-/* Переносим в нашу новую функцию-редусур, profileReducer,
-из state.js логику для добавления поста и отражения в textarea 
-содержимого state.js, созданную для файла profile, MyPosts.jsx.
-Но при этому убираем связку this._state_profilePage, так как 
-в пропсах мы приняли  state, который несет в себе в качестве
-объекта this._state.profilePage, прописанный для данной логики
-в файле state.js. 
-То есть вместо this._state.profilePage, прописанному ранее 
-в файле state.js,(в этом проекте есть копия прежнего state.js
- -- state-a.js) у нас теперь есть объект state.
-Также теперь не нужен   this._callSubscriber(this._state), так
-как подписываться на событие нам здесь не нужно;
-Константы ADD_POST и UPDATE_NEW_POST_TEXT также объявляются здесь,
-чтобы функция могла с ними работать. При этом в файле state.js они 
-также объявляются, поскольку там вызываются функции-редусеры.
+
+
+/* Создаем объект initialState и переносим 
+в него содержимое объекта profilePage, которое
+прежде содержалось в _state объекта store, 
+в файое state.js.
+И присваиваем этот вновь созданный объект
+в параметр  state нашей функции profileReducer.
+Аналогично поступаем в файле dialogues-reducer
+относительно функции dialoguesReducer, т. е. 
+передаем ей в параметр  state объект dialoguesPage.
 */
-
-/* Цикл ветвления  if () else if {} можно 
-заменить циклом типа switch () {
-case ... :
-       ...
-       return state;
-case ... : 
-       ...
-       return state
-default:
-    return state;
-}
-
- Также, можне добавить рефакторинг:
- перенести функции-криейторы addPostCreator 
- updateNewPostTextCreator из файла state.js
- сюда. Чтобы освободить файл  state.js.
-*/
- /*Аналогичные действия выполняются для
- файла dialogues-reducer.
- */
-
 
 
 
